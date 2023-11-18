@@ -1,0 +1,30 @@
+.user {
+  margin-bottom: 5%;
+  margin-top: -10px;
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.name {
+  margin-bottom: 1rem;
+}
+.foto {
+  border-radius: 50px;
+  border: black solid 1px;
+  width: 63px;
+  height: 65px;
+}
+.status {
+  position: relative;
+  float: right;
+  border: solid 0.3px rgb(31, 30, 29);
+  border-radius: 8px;
+  width: 15px;
+  height: 15px;
+}
+
+.activo {
+  background-color: rgb(48, 211, 48);
+}
