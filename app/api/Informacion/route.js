@@ -29,7 +29,7 @@ export async function GET(request, { params }) {
   try {
     const result = await new Promise((resolve, reject) => {
       conect.query(
-        "SELECT * FROM usuarios WHERE id = ? ",
+        "SELECT * FROM sobremi WHERE id = ? ",
         [params.id],
         (error, res) => {
           if (error) {
