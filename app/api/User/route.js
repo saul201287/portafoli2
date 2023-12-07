@@ -3,6 +3,7 @@ const conect = require("@/libs/conect");
 
 export async function POST(request, { params }) {
   const body = await request.json();
+  console.log(body);
   try {
     await insertarUsuario(body);
     await insertarContacto(body);

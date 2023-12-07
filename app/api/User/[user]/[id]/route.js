@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 const conect = require("@/libs/conect");
 
 export async function GET(request, { params }) {
+  //console.log(params);
   try {
     const result = await new Promise((resolve, reject) => {
       conect.query(
@@ -17,6 +18,7 @@ export async function GET(request, { params }) {
       );
     });
     if (result && result.length > 0) {
+      console.log(result);
       return NextResponse.json({ success: true, data: result });
     } else {
       return NextResponse.json({

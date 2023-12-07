@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import { Link } from "react-scroll";
 import "../../styles/Nav/nav.css";
 import Icon from "./Icon";
 function Opciones() {
@@ -23,16 +23,18 @@ function Opciones() {
   }, []);
 
   return (
+    <div className="barra">
     <div className="nav">
       <Icon name={name} />
       <ul className="opciones">
-        <Link href="../components/Bienvenido.jsx">
-          <li style={{ borderTop: "solid 1px bisque" }}>Acerca de mi</li>
+        <Link to="educacion" smooth={true} duration={500}>
+          <li style={{ borderTop: "solid 1px bisque" }}>Sobre de mi</li>
         </Link>
         <li>Habilidades</li>
         <li>Educación</li>
         <li>Experiencia laboral</li>
       </ul>
+    </div>
     </div>
   );
 }

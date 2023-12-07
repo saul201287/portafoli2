@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import Credenciales from "@/app/components/CrearCuenta/Credenciales";
 
 function CrearCuenta() {
-  const [see, setSeee] = useState(false);
+  const [see, setSeee] = useState(true);
   const [see2, setSeee2] = useState(false);
   const [see3, setSeee3] = useState(false);
   const [see4, setSeee4] = useState(false);
@@ -28,13 +28,14 @@ function CrearCuenta() {
   const router = useRouter();
   const setValores = async (value) => {
     setValor(value);
+    console.log(value);
     try {
       const response = await fetch("/api/User", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(valor),
+        body: JSON.stringify(value),
       });
       if (response.ok) {
         Swal.fire({
@@ -58,7 +59,7 @@ function CrearCuenta() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(valor2),
+        body: JSON.stringify(value2),
       });
       if (response.ok) {
         Swal.fire({
@@ -81,7 +82,7 @@ function CrearCuenta() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(valor3),
+        body: JSON.stringify(value3),
       });
       if (response.ok) {
         Swal.fire({
@@ -104,7 +105,7 @@ function CrearCuenta() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(valor4),
+        body: JSON.stringify(value4),
       });
       if (response.ok) {
         Swal.fire({
@@ -122,12 +123,12 @@ function CrearCuenta() {
   const setValores5 = async (value5) => {
     setValor5(value5);
     try {
-      const response = await fetch("/api/SobreMi", {
+      const response = await fetch("/api/Informacion", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(valor5),
+        body: JSON.stringify(value5),
       });
       if (response.ok) {
         Swal.fire({
@@ -144,27 +145,32 @@ function CrearCuenta() {
   };
   const setValores6 = async (value6) => {
     setValor6(value6);
+    console.log(value6);
     try {
       const response = await fetch("/api/User/Credenciales", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(valor6),
-      });
-      if (response.ok) {
+        body: JSON.stringify(value6),
+      }).then(async (data) => {
         Swal.fire({
           icon: "success",
           title: "OK",
           text: "Datos enviados",
         });
-        const data = await response.json();
-        console.log("Datos enviados:", data);
-      }
+        
+        await data.json().then((valor) =>{
+          localStorage.setItem("Usuario", JSON.stringify(value6.email));
+          localStorage.setItem("Id", JSON.stringify(valor));
+          //router.push("/pages/Nav");
+        } )
+      });
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
   const view = () => {
     setSeee(false);
     setSeee2(true);
@@ -174,37 +180,20 @@ function CrearCuenta() {
     setSeee6(false);
   };
   const view2 = () => {
-    console.log(valor);
-    if (valor.length === 0) {
-      Swal.fire({
-        icon: "warning",
-        title: "Oops...",
-        text: "Envie la informacion requerida antes de pasar a la siguiente pagina",
-      });
-    } else {
-      setSeee(false);
-      setSeee2(false);
-      setSeee3(true);
-      setSeee4(false);
-      setSeee5(false);
-      setSeee6(false);
-    }
+    setSeee(false);
+    setSeee2(false);
+    setSeee3(true);
+    setSeee4(false);
+    setSeee5(false);
+    setSeee6(false);
   };
   const view3 = () => {
-    if (valor2.length === 0) {
-      Swal.fire({
-        icon: "warning",
-        title: "Oops...",
-        text: "Envie la informacion requerida antes de pasar a la siguiente pagina",
-      });
-    } else {
-      setSeee(false);
-      setSeee2(false);
-      setSeee3(false);
-      setSeee4(true);
-      setSeee5(false);
-      setSeee6(false);
-    }
+    setSeee(false);
+    setSeee2(false);
+    setSeee3(false);
+    setSeee4(true);
+    setSeee5(false);
+    setSeee6(false);
   };
   const view4 = () => {
     setSeee(false);
@@ -242,7 +231,14 @@ function CrearCuenta() {
       router.push("/pages/Nav");
     }
   };
-
+  const view8 = () => {
+    setSeee(true);
+    setSeee2(false);
+    setSeee3(false);
+    setSeee4(false);
+    setSeee5(false);
+    setSeee6(false);
+  };
   return (
     <div style={{ width: "100%", height: "100vh" }}>
       {see === true ? (
@@ -262,7 +258,7 @@ function CrearCuenta() {
           <Formulario setValores={setValores} />
           <div style={{ marginTop: "10px" }}>
             <button
-              onClick={view6}
+              onClick={view8}
               className="btn1"
               style={{ marginRight: "50px" }}>
               Regresar

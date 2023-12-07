@@ -53,7 +53,6 @@ function Body() {
     } catch (error) {
       console.log(error);
     }
-    //const usuario = JSON.parse(localStorage.getItem("Usuarios"));
   };
   return (
     <div className="body">
@@ -86,7 +85,7 @@ function Body() {
             required
             type="password"
             name="password"
-            minLength={8}
+            minLength={6}
             value={password}
             onChange={capturarPassword}
             placeholder="contraseña"

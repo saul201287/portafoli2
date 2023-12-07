@@ -38,6 +38,12 @@ function Formulario(props) {
       telefono: telefono,
       sitio: sitio,
     });
+    setApellidos("")
+    setCorreo("")
+    setEdad("")
+    setNombre("")
+    setSitio("")
+    setTelefono("")
   };
   return (
     <form

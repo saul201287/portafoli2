@@ -19,10 +19,10 @@ function Educacion(props) {
   ];
   const [escolaridad, setescolaridad] = useState(opciones[0]);
   const [opc, setOpc] = useState(" ");
-  const [profecion, setProfecion] = useState(" ");
+  const [profecion, setProfecion] = useState("Sin profeción");
   const [date, setDate] = useState(" ");
   const [date2, setDate2] = useState(" ");
-  const [diploma, setDiploma] = useState(" ");
+  const [diploma, setDiploma] = useState("Ninguno");
 
   const handleOpcion = (event) => {
     setOpc(event.target.value);
@@ -82,10 +82,7 @@ function Educacion(props) {
             </select>
             <br />
           </div>
-          {escolaridad === "Doctorado" ||
-          escolaridad === "Maestria" ||
-          escolaridad === "Licenciatura" ||
-          escolaridad === "Preparatoria Tecnica" ? (
+          {escolaridad !== "Ninguno" ? (
             <div className="infoEdu">
               <label htmlFor="input">
                 Ingrese la fecha que comenzo y termino su {escolaridad}
@@ -99,52 +96,59 @@ function Educacion(props) {
                 onChange={handleDate2}
               />
               <br />
-              <label htmlFor="input">Ingrese su profeción:</label>
-              <input
-                required
-                type="text"
-                value={profecion}
-                onChange={handleProfecion}
-                placeholder="Profeción"
-              />
-              <br />
-              <label htmlFor="input">
-                ¿Obtuvo algun reconocimiento o diploma?
-              </label>
-              <br />
-              <label>
-                <input
-                  required
-                  type="radio"
-                  value="Si"
-                  checked={opc === "Si"}
-                  onChange={handleOpcion}
-                />
-                Si
-              </label>
-              <label>
-                <input
-                  required
-                  type="radio"
-                  value="No"
-                  checked={opc === "No"}
-                  onChange={handleOpcion}
-                />
-                No
-              </label>
-              {opc === "Si" ? (
+              {escolaridad === "Doctorado" ||
+              escolaridad === "Maestria" ||
+              escolaridad === "Licenciatura" ||
+              escolaridad === "Preparatoria Tecnica" ? (
                 <>
-                  <br />
-                  <label htmlFor="">
-                    Ingrese cual fue el reconoimiento o diploma:
-                  </label>
-                  <br />
+                  <label htmlFor="input">Ingrese su profeción:</label>
                   <input
                     required
                     type="text"
-                    value={diploma}
-                    onChange={handleDiploma}
+                    value={profecion}
+                    onChange={handleProfecion}
+                    placeholder="Profeción"
                   />
+                  <br />
+                  <label htmlFor="input">
+                    ¿Obtuvo algun reconocimiento o diploma?
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      required
+                      type="radio"
+                      value="Si"
+                      checked={opc === "Si"}
+                      onChange={handleOpcion}
+                    />
+                    Si
+                  </label>
+                  <label>
+                    <input
+                      required
+                      type="radio"
+                      value="No"
+                      checked={opc === "No"}
+                      onChange={handleOpcion}
+                    />
+                    No
+                  </label>
+                  {opc === "Si" ? (
+                    <>
+                      <br />
+                      <label htmlFor="">
+                        Ingrese cual fue el reconoimiento o diploma:
+                      </label>
+                      <br />
+                      <input
+                        required
+                        type="text"
+                        value={diploma}
+                        onChange={handleDiploma}
+                      />
+                    </>
+                  ) : null}
                 </>
               ) : null}
             </div>

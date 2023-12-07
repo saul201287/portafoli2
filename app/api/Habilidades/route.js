@@ -31,10 +31,10 @@ export async function POST(request, { params }) {
     return NextResponse.json({ msg: error.message });
   }
 }
-export async function GET(request, { params }) {
-  /* try {
+/* export async function GET(request, { params }) {
+  try {
       const result = await new Promise((resolve, reject) => {
-        conect.query("SELECT * FROM usuarios", (error, res) => {
+        conect.query("SELECT * FROM habilidades where id = ?",[params.id], (error, res) => {
           if (error) {
             reject(error);
           } else {
@@ -47,6 +47,7 @@ export async function GET(request, { params }) {
     } catch (error) {
       console.error("Error:", error);
       return NextResponse.json({ error: "Error al obtener datos" });
-    } */
+    }
   return NextResponse.json({ error: "Error al obtener datos" });
 }
+ */

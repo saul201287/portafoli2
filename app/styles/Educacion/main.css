@@ -1,0 +1,21 @@
+.edu{
+    width: 100%;
+    height: 50vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: linear-gradient(to right, #da9b8f, #964e3f);
+}
+.edu ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    font-size: 15pt;
+    align-items: flex-start;
+    margin-left: 300px;
+    margin-top: 40px;
+}
+.edu ul li{
+    padding: 8px;
+}

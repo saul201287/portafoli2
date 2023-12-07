@@ -18,8 +18,8 @@ export async function POST(request, { params }) {
         }
       );
     });
-
-    return NextResponse.json(result);
+    console.log(result.insertId);
+    return NextResponse.json(result.insertId);
   } catch (error) {
     console.error("Error:", error);
     return NextResponse.json({ msg: error.message });
